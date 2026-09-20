@@ -21,6 +21,7 @@ from PySide6.QtGui import (
 )
 
 from core.controller import Controller
+from core.shell_refresh import ShellRefresher
 from core.utils import clip
 from data.constants import ICON_SVG
 import data.font_loader as font_loader
@@ -102,6 +103,7 @@ class MainWindow(QMainWindow):
         self.settings_tab.signals.jxl_lossy_modular_toggled.connect(self.output_tab.onJXLLossyModularVisibleToggled)
         self.settings_tab.signals.jxl_int_effort_toggled.connect(self.output_tab.onJXLIntEffortVisibleToggled)
         self.settings_tab.signals.avif_encoder_changed.connect(self.output_tab.onAVIFEncoderChanged)
+        self.shell_refresher = ShellRefresher(self.controller, self.threadpool, self.output_tab.getSettings)
 
     def setupMisc(self) -> None:
         select_tab_sc = []

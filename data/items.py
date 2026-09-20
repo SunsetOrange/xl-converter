@@ -6,7 +6,7 @@ from data.constants import ALLOWED_INPUT
 
 class Items():
     def __init__(self):
-        self.items = []
+        self.items: list[tuple[Path, Path]] = []
         self.item_count = 0
         self.completed_item_count = 0
 
@@ -40,7 +40,7 @@ class Items():
             # Improves file access times on HDDs
             self.items.sort(key=lambda pair: (str(pair[0].parent).casefold(), pair[0].name.casefold()))
 
-    def getItem(self, n) -> Path:
+    def getItem(self, n: int) -> tuple[Path, Path]:
         return self.items[n]
 
     def getItemCount(self) -> int:
