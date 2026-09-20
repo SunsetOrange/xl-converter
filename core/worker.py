@@ -501,6 +501,7 @@ class Worker(QRunnable):
         if (
             (
                 not self.settings["keep_if_larger"] or
+                self.params["format"] == "JPEG Reconstruction" or  # Reconstructed JPEGs are always larger than the source JPEG XL
                 os.path.getsize(self.org_item_abs_path) > os.path.getsize(self.final_output)
             ) and
             not isSamePath(self.org_item_abs_path, self.final_output)
